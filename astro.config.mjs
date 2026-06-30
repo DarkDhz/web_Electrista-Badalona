@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://electricista-badalona.com',
+  site: 'https://www.electricista-badalona.com',
   i18n: {
     defaultLocale: 'es',
     locales: ['es', 'ca'],

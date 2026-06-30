@@ -12,8 +12,8 @@ const _t = content[lang];
 ---
 
 <!--
-  WhatsApp flotante abajo a la derecha.
-  Oculto en móvil (<md) porque ahí ya está la barra fija de StickyCallButton con WhatsApp.
+  WhatsApp flotante abajo a la derecha, en todos los tamaños.
+  El CTA de llamar ya está en la navbar (Header), así que no se duplica aquí.
 -->
 <a
   href={whatsappHref()}
@@ -22,7 +22,7 @@ const _t = content[lang];
   aria-label={label}
   title={label}
   data-whatsapp-cta
-  class="fixed bottom-6 right-6 z-50 hidden h-14 w-14 place-items-center rounded-full bg-teal text-crema shadow-warm transition hover:scale-105 hover:bg-teal-dark md:grid"
+  class="fixed bottom-6 right-6 z-50 grid h-14 w-14 place-items-center rounded-full bg-teal text-crema shadow-warm transition hover:scale-105 hover:bg-teal-dark"
 >
   <Icon name="whatsapp" class="h-7 w-7" />
 </a>

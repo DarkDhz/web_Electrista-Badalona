@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "electricista-badalona.com" }],
+      "destination": "https://www.electricista-badalona.com/:path*",
+      "permanent": true
+    }
+  ]
+}

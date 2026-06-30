@@ -26,7 +26,7 @@ export const business = {
   openingHours: 'Lu-Vi 08:00-20:00',
   openingHoursDisplay: 'Lunes a viernes, 8:00 – 20:00 h',
   // Dominio / web
-  url: 'https://electricista-badalona.com',
+  url: 'https://www.electricista-badalona.com',
   // Analítica — propiedad GA4 real
   ga4Id: 'G-KN0LS7Y9Y1',
   // Zona de cobertura

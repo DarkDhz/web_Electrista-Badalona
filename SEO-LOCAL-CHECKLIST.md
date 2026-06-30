@@ -22,7 +22,7 @@ depende sobre todo del trabajo **off-site** de esta lista. Hazlo en orden.
 - [ ] Categoría principal: **Electricista**. Categorías secundarias si aplica (p. ej. "Servicio de instalación eléctrica").
 - [ ] Dirección: **Carrer de la Camèlia, 20, 08912 Badalona** (debe coincidir EXACTAMENTE con la web — ver punto 2).
 - [ ] Teléfono: **684 30 29 22** (el mismo que en la web).
-- [ ] Web: **https://electricista-badalona.com**
+- [ ] Web: **https://www.electricista-badalona.com**
 - [ ] Horario: **Lunes a viernes, 8:00–20:00** (igual que la web).
 - [ ] Definir **área de servicio**: Badalona, Santa Coloma de Gramenet, Sant Adrià de Besòs, Montgat, Tiana.
 - [ ] Subir **fotos reales**: trabajos hechos, el vehículo, tú trabajando. (Google premia las fichas con fotos reales.)
@@ -56,7 +56,7 @@ Carrer de la Camèlia, 20, 08912 Badalona
 ## 4. Indexación y seguimiento
 
 - [ ] Dar de alta el dominio en **Google Search Console** (https://search.google.com/search-console) y verificarlo.
-- [ ] Enviar el sitemap: `https://electricista-badalona.com/sitemap-index.xml`
+- [ ] Enviar el sitemap: `https://www.electricista-badalona.com/sitemap-index.xml`
 - [ ] Comprobar que GA4 (`G-KN0LS7Y9Y1`) recibe visitas (ya integrado, se activa al aceptar cookies).
 - [ ] Validar el schema con el Rich Results Test: https://search.google.com/test/rich-results
 - [ ] Repetir el research de keywords en Ahrefs cuando tengas cupo: validar "electricista badalona",

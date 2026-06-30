@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://electricista-badalona.com/sitemap-index.xml
+Sitemap: https://www.electricista-badalona.com/sitemap-index.xml

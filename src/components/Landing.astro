@@ -3,7 +3,6 @@ import { business, telHref, whatsappHref } from '../data/business';
 import { content, type Lang } from '../data/content';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
-import StickyCallButton from './StickyCallButton.astro';
 import FloatingWhatsApp from './FloatingWhatsApp.astro';
 import ServiceCard from './ServiceCard.astro';
 import TrustBadge from './TrustBadge.astro';
@@ -224,6 +223,5 @@ const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
 </main>
 
 <Footer lang={lang} />
-<StickyCallButton lang={lang} />
 <FloatingWhatsApp lang={lang} />
 <CookieBanner lang={lang} />

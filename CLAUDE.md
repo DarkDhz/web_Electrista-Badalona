@@ -29,6 +29,20 @@ es instalar `playwright-core` en un dir scratch y lanzar Chrome con `executableP
 hacer `fullPage` screenshots y comprobar `documentElement.scrollWidth > clientWidth`. El mapa de Google embebido sale
 en blanco en headless (no pinta tiles sin consentimiento) pero funciona en un navegador real — no es un bug.
 
+## Despliegue y dominio canónico
+
+Se despliega en **Vercel** (output estático, sin adapter: Vercel sirve `dist/`). El dominio canónico es **`www`**
+(`https://www.electricista-badalona.com`); el apex redirige a www con 308 vía `vercel.json` (condición de host).
+Para que ese redirect actúe, en Vercel → Settings → Domains deben estar **ambos** dominios y `www` marcado como
+*Primary Domain*.
+
+**Invariante: la URL del sitio está en TRES sitios que deben quedar sincronizados** — si cambias de dominio
+(o de www↔apex), cámbialo en los tres:
+
+- `astro.config.mjs` → `site` (de aquí salen canonical, hreflang y el sitemap)
+- `src/data/business.ts` → `url` (de aquí salen el JSON-LD y `og:image`)
+- `public/robots.txt` → línea `Sitemap:`
+
 ## Arquitectura
 
 El patrón central es **contenido separado de presentación**, para que las dos landing (ES y CA) compartan el mismo
@@ -62,6 +76,20 @@ i18n: configurado en `astro.config.mjs` con `defaultLocale: 'es'` y `prefixDefau
 raíz, catalán bajo `/ca/`. Al añadir cualquier página nueva, créala en ambos idiomas y enlaza el par vía `alternates`
 para mantener el hreflang correcto.
 
+### Imágenes (dos vías, según destino)
+
+- **Imágenes renderizadas en páginas** (logo, foto del hero) van en `src/assets/` y se usan con `<Image>` de
+  `astro:assets` (`import logo from '../assets/logo.png'`). Astro las optimiza solo en el build: WebP/AVIF + tamaños
+  responsive servidos desde `/_astro/`. El servicio de imagen es **sharp** (incluido con Astro, sin config). Para
+  el hero, que está above-the-fold, se usa `loading="eager"` + `fetchpriority="high"`; el `alt` viene de
+  `content.ts` (clave `hero.photoAlt`, bilingüe) — no hardcodear texto alternativo en el `.astro`.
+- **Imágenes con URL fija** (favicon set, `og-image.jpg`) van en `public/` porque las referencian el `<head>` y el
+  JSON-LD por ruta absoluta (`schema.ts` usa `${business.url}/og-image.jpg`). `public/` NO pasa por el pipeline de
+  Astro, así que estas se pre-optimizan **a mano con sharp** (script puntual `node -e`, no versionado). El favicon
+  vive como set PNG (`favicon-16/32.png`, `apple-touch-icon.png`, `favicon.png` 512px), no como SVG.
+- Si cambias el logo o la foto del hero, reemplaza el archivo en `src/assets/`; si cambias `og-image.jpg`, mantenla
+  a 1200×630 (lo declaran las meta `og:image:width/height` en `BaseLayout`).
+
 ## Diseño (no negociable)
 
 Dirección visual **"Cercanía de barrio"**, definida con tokens en `@theme` dentro de `src/styles/global.css`
@@ -77,13 +105,13 @@ propios en `src/components/Icon.astro` (no Heroicons), sin glassmorphism, copy e
 
 - **Nunca inventar prueba social**: no hay reseñas ni testimonios todavía (negocio nuevo). La confianza se transmite
   con garantías reales (`TrustBadge.astro`), no con estrellas/cifras falsas. Añadir reseñas solo cuando existan de verdad.
-- **Foto del hero es un placeholder** (`[FOTO ELECTRICISTA AQUÍ]`); sustituir por foto real, nunca por imagen de IA
-  simulando una persona ni stock genérico.
+- **Foto del hero**: es una foto real de un cuadro eléctrico (`src/assets/portada.jpg`). Al sustituirla, usar foto
+  real del oficio; **nunca** imagen de IA simulando una persona ni stock genérico de persona posando.
 - **Datos fiscales pendientes**: `legalName` y `nif` en `business.ts` son placeholders porque el titular aún no está
   dado de alta como autónomo. **No se debe desplegar a producción** sin rellenarlos (requisito legal del Aviso Legal).
-- **Dos CTA de WhatsApp según dispositivo** (no duplicar): `StickyCallButton.astro` es la barra fija inferior con
-  Llamar + WhatsApp, solo en móvil (`md:hidden`); `FloatingWhatsApp.astro` es el botón flotante circular, solo en
-  escritorio (`hidden md:grid`). Todos los CTA llevan `data-call-cta` / `data-whatsapp-cta` para medir clics en GA4.
+- **CTA sin duplicar**: el CTA de *llamar* vive solo en la navbar (`Header.astro`); el de *WhatsApp* es el botón
+  flotante circular `FloatingWhatsApp.astro`, visible en todos los tamaños (móvil y escritorio). Todos los CTA llevan
+  `data-call-cta` / `data-whatsapp-cta` para medir clics en GA4.
 
 ## Contexto del proyecto
 
