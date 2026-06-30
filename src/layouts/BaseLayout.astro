@@ -74,29 +74,34 @@ const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <!-- JSON-LD -->
     {schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
 
-    <!--
-      Google Analytics 4 — carga condicionada al consentimiento (RGPD).
-      gtag NO se carga hasta que el usuario acepta en el CookieBanner.
-      Reemplazar [GA4_MEASUREMENT_ID] por el ID real (G-XXXXXXX) al crear la propiedad.
-    -->
+    <!-- Google Analytics 4 con Consent Mode: detectable, sin cookies de analítica hasta aceptar. -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${business.ga4Id}`}></script>
     <script is:inline define:vars={{ ga4Id: business.ga4Id }}>
       window.__GA4_ID__ = ga4Id;
-      function loadGA4() {
-        if (!window.__GA4_ID__ || window.__GA4_ID__.startsWith('[') || window.__ga4Loaded__) return;
-        window.__ga4Loaded__ = true;
-        const s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.__GA4_ID__;
-        document.head.appendChild(s);
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function () {
-          window.dataLayer.push(arguments);
-        };
-        window.gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
+
+      window.gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+      });
+      window.gtag('js', new Date());
+
+      function enableGA4() {
+        if (!window.__GA4_ID__ || window.__GA4_ID__.startsWith('[') || window.__ga4Enabled__) return;
+        window.__ga4Enabled__ = true;
+        window.gtag('consent', 'update', {
+          analytics_storage: 'granted',
+        });
         window.gtag('config', window.__GA4_ID__, { anonymize_ip: true });
       }
-      window.__loadGA4__ = loadGA4;
-      if (localStorage.getItem('cookie-consent') === 'accepted') loadGA4();
+
+      window.__loadGA4__ = enableGA4;
+      if (localStorage.getItem('cookie-consent') === 'accepted') enableGA4();
     </script>
   </head>
   <body class="bg-crema text-tinta antialiased">
