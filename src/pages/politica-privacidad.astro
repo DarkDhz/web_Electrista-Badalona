@@ -1,0 +1,58 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { business } from '../data/business';
+---
+
+<LegalLayout
+  lang="es"
+  title="Política de privacidad | Electricista Badalona"
+  description="Política de privacidad y uso de cookies de Electricista Badalona."
+  path="/politica-privacidad/"
+  alternates={{ es: '/politica-privacidad/', ca: '/ca/politica-de-privacitat/' }}
+>
+  <h1>Política de privacidad</h1>
+
+  <h2>1. Responsable del tratamiento</h2>
+  <p>
+    {business.legalName} (NIF {business.nif}), con domicilio en {business.street}, {business.postalCode}
+    {business.city}, correo electrónico {business.email}.
+  </p>
+
+  <h2>2. Finalidad del tratamiento</h2>
+  <p>
+    Los datos que nos facilites a través del teléfono, WhatsApp o correo electrónico se utilizan únicamente para
+    atender tu solicitud, elaborar presupuestos y prestar el servicio de instalación eléctrica solicitado.
+  </p>
+
+  <h2>3. Legitimación</h2>
+  <p>
+    La base legal es tu consentimiento al contactar con nosotros y la ejecución de la relación precontractual o
+    contractual derivada de tu solicitud de presupuesto.
+  </p>
+
+  <h2>4. Conservación de los datos</h2>
+  <p>
+    Conservamos tus datos el tiempo necesario para atender tu solicitud y, en su caso, durante los plazos legales
+    aplicables a las obligaciones fiscales y de garantía.
+  </p>
+
+  <h2>5. Cookies y analítica</h2>
+  <p>
+    Este sitio utiliza <strong>Google Analytics 4</strong> para entender de forma agregada cómo se usa la web. Estas
+    cookies <strong>solo se activan si aceptas</strong> el aviso de cookies; si lo rechazas, no se carga ninguna cookie
+    de analítica. La dirección IP se trata de forma anonimizada. Google Analytics es un servicio de Google Ireland
+    Limited; puedes consultar su política en <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.
+  </p>
+
+  <h2>6. Derechos</h2>
+  <p>
+    Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a
+    {business.email}. También puedes presentar una reclamación ante la Agencia Española de Protección de Datos
+    (<a href="https://www.aepd.es">www.aepd.es</a>).
+  </p>
+
+  <p>
+    <strong>Nota:</strong> los datos del responsable deben completarse una vez formalizada el alta como autónomo o
+    empresa antes de la publicación del sitio.
+  </p>
+</LegalLayout>

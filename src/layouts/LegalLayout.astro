@@ -1,0 +1,63 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import type { Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  path: string;
+  alternates?: Partial<Record<Lang, string>>;
+}
+const { lang, title, description, path, alternates } = Astro.props;
+---
+
+<BaseLayout lang={lang} title={title} description={description} path={path} alternates={alternates}>
+  <Header lang={lang} />
+  <main class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <article class="prose-legal">
+      <slot />
+    </article>
+  </main>
+  <Footer lang={lang} />
+</BaseLayout>
+
+<style is:global>
+  .prose-legal h1 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-tinta);
+    margin-bottom: 1.5rem;
+  }
+  .prose-legal h2 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--color-tinta);
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .prose-legal p,
+  .prose-legal li {
+    color: var(--color-tinta-muted);
+    line-height: 1.7;
+  }
+  .prose-legal p {
+    margin-bottom: 1rem;
+  }
+  .prose-legal ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .prose-legal a {
+    color: var(--color-teal);
+    text-decoration: underline;
+  }
+  .prose-legal strong {
+    color: var(--color-tinta);
+  }
+</style>

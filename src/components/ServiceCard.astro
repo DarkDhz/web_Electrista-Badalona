@@ -1,0 +1,18 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  title: string;
+  text: string;
+  icon: 'panel' | 'wire' | 'switch';
+}
+const { title, text, icon } = Astro.props;
+---
+
+<article class="group flex flex-col gap-4 rounded-2xl border border-crema-200 bg-white/70 p-6 shadow-warm-sm transition hover:-translate-y-0.5 hover:shadow-warm">
+  <span class="grid h-12 w-12 place-items-center rounded-xl bg-terracota/10 text-terracota">
+    <Icon name={icon} class="h-7 w-7" />
+  </span>
+  <h3 class="font-display text-xl font-semibold text-tinta">{title}</h3>
+  <p class="text-tinta-muted">{text}</p>
+</article>

@@ -1,0 +1,49 @@
+---
+import { telHref } from '../data/business';
+import { content, type Lang } from '../data/content';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = content[lang];
+const otherLang: Lang = lang === 'es' ? 'ca' : 'es';
+const otherHref = lang === 'es' ? '/ca/' : '/';
+---
+
+<header class="sticky top-0 z-40 border-b border-crema-200 bg-crema/90 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <a href={lang === 'es' ? '/' : '/ca/'} class="flex items-center gap-2 font-display text-lg font-semibold text-tinta">
+      <span class="grid h-9 w-9 place-items-center rounded-lg bg-terracota text-crema">
+        <Icon name="bolt" class="h-5 w-5" />
+      </span>
+      Electricista Badalona
+    </a>
+
+    <nav class="hidden items-center gap-6 text-sm font-medium md:flex" aria-label={lang === 'es' ? 'Navegación principal' : 'Navegació principal'}>
+      <a href="#servicios" class="text-tinta-muted transition hover:text-terracota">{t.nav.servicios}</a>
+      <a href="#proceso" class="text-tinta-muted transition hover:text-terracota">{t.nav.proceso}</a>
+      <a href="#zona" class="text-tinta-muted transition hover:text-terracota">{t.nav.zona}</a>
+      <a href="#faq" class="text-tinta-muted transition hover:text-terracota">{t.nav.faq}</a>
+      <a
+        href={otherHref}
+        hreflang={otherLang === 'ca' ? 'ca-ES' : 'es-ES'}
+        class="rounded-md border border-crema-200 px-2 py-1 text-xs uppercase tracking-wide text-tinta-muted transition hover:border-teal hover:text-teal"
+        aria-label={otherLang === 'ca' ? 'Versió en català' : 'Versión en castellano'}
+      >
+        {otherLang === 'ca' ? 'CA' : 'ES'}
+      </a>
+    </nav>
+
+    <a
+      href={telHref}
+      class="inline-flex items-center gap-2 rounded-lg bg-terracota px-4 py-2 text-sm font-semibold text-crema shadow-warm-sm transition hover:bg-terracota-dark"
+      data-call-cta
+    >
+      <Icon name="phone" class="h-4 w-4" />
+      <span class="hidden sm:inline">{t.nav.cta}</span>
+      <span class="sm:hidden">684 30 29 22</span>
+    </a>
+  </div>
+</header>

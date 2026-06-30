@@ -1,0 +1,59 @@
+---
+import { content, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = content[lang];
+const privacyHref = lang === 'es' ? '/politica-privacidad/' : '/ca/politica-de-privacitat/';
+---
+
+<div
+  id="cookie-banner"
+  class="fixed inset-x-0 bottom-0 z-[60] hidden translate-y-0 border-t border-crema-200 bg-white/95 shadow-warm backdrop-blur md:bottom-4 md:left-4 md:right-auto md:max-w-md md:rounded-2xl md:border"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Cookies"
+>
+  <div class="flex flex-col gap-3 p-4 sm:p-5">
+    <p class="text-sm text-tinta-muted">
+      {t.cookies.text}
+      <a href={privacyHref} class="font-semibold text-teal underline">{t.cookies.link}</a>.
+    </p>
+    <div class="flex gap-2">
+      <button
+        id="cookie-accept"
+        class="flex-1 rounded-lg bg-terracota px-4 py-2 text-sm font-semibold text-crema transition hover:bg-terracota-dark"
+      >
+        {t.cookies.accept}
+      </button>
+      <button
+        id="cookie-reject"
+        class="flex-1 rounded-lg border border-crema-200 px-4 py-2 text-sm font-semibold text-tinta-muted transition hover:border-tinta-muted"
+      >
+        {t.cookies.reject}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+    var consent = localStorage.getItem('cookie-consent');
+    if (!consent) {
+      banner.classList.remove('hidden');
+    }
+    document.getElementById('cookie-accept')?.addEventListener('click', function () {
+      localStorage.setItem('cookie-consent', 'accepted');
+      banner.classList.add('hidden');
+      if (typeof window.__loadGA4__ === 'function') window.__loadGA4__();
+    });
+    document.getElementById('cookie-reject')?.addEventListener('click', function () {
+      localStorage.setItem('cookie-consent', 'rejected');
+      banner.classList.add('hidden');
+    });
+  })();
+</script>

@@ -1,0 +1,63 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { business } from '../data/business';
+---
+
+<LegalLayout
+  lang="es"
+  title="Aviso legal | Electricista Badalona"
+  description="Aviso legal de Electricista Badalona."
+  path="/aviso-legal/"
+  alternates={{ es: '/aviso-legal/', ca: '/ca/avis-legal/' }}
+>
+  <h1>Aviso legal</h1>
+
+  <p>
+    En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio
+    Electrónico (LSSI-CE), se informa de los siguientes datos:
+  </p>
+
+  <h2>1. Datos identificativos del titular</h2>
+  <ul>
+    <li><strong>Titular:</strong> {business.legalName}</li>
+    <li><strong>NIF:</strong> {business.nif}</li>
+    <li><strong>Domicilio:</strong> {business.street}, {business.postalCode} {business.city} ({business.region})</li>
+    <li><strong>Teléfono:</strong> {business.phoneDisplay}</li>
+    <li><strong>Correo electrónico:</strong> {business.email}</li>
+    <li><strong>Sitio web:</strong> {business.url}</li>
+  </ul>
+  <p>
+    <strong>Nota:</strong> los datos fiscales (nombre fiscal y NIF) deben completarse una vez formalizada el alta como
+    autónomo o empresa antes de la publicación del sitio.
+  </p>
+
+  <h2>2. Objeto</h2>
+  <p>
+    El presente sitio web tiene como finalidad informar sobre los servicios de instalaciones eléctricas que ofrece el
+    titular en Badalona y alrededores, así como facilitar el contacto con clientes potenciales.
+  </p>
+
+  <h2>3. Condiciones de uso</h2>
+  <p>
+    El acceso y uso de este sitio web atribuye la condición de usuario, que acepta las presentes condiciones. El usuario
+    se compromete a hacer un uso adecuado de los contenidos y a no emplearlos para actividades ilícitas.
+  </p>
+
+  <h2>4. Propiedad intelectual e industrial</h2>
+  <p>
+    Todos los contenidos del sitio (textos, imágenes, diseño y código) son titularidad del responsable o se utilizan con
+    autorización. Queda prohibida su reproducción sin consentimiento expreso.
+  </p>
+
+  <h2>5. Responsabilidad</h2>
+  <p>
+    El titular no se hace responsable de los daños derivados del uso indebido del sitio ni de la información contenida en
+    sitios de terceros enlazados.
+  </p>
+
+  <h2>6. Legislación aplicable</h2>
+  <p>
+    Las presentes condiciones se rigen por la legislación española. Para cualquier controversia serán competentes los
+    juzgados y tribunales que correspondan conforme a la normativa vigente.
+  </p>
+</LegalLayout>

@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Landing from '../../components/Landing.astro';
+import { content } from '../../data/content';
+import { localBusinessSchema, faqSchema } from '../../data/schema';
+
+const lang = 'ca' as const;
+const t = content[lang];
+---
+
+<BaseLayout
+  lang={lang}
+  title={t.metaTitle}
+  description={t.metaDescription}
+  path="/ca/"
+  alternates={{ es: '/', ca: '/ca/' }}
+  jsonLd={[localBusinessSchema(lang), faqSchema(t.faq.items)]}
+>
+  <Landing lang={lang} />
+</BaseLayout>

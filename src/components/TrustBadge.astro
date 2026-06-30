@@ -1,0 +1,20 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  title: string;
+  text: string;
+  icon: 'check' | 'shield' | 'clock';
+}
+const { title, text, icon } = Astro.props;
+---
+
+<div class="flex items-start gap-3 rounded-xl border border-crema-200 bg-white/60 p-4">
+  <span class="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-teal/10 text-teal">
+    <Icon name={icon} class="h-5 w-5" />
+  </span>
+  <div>
+    <p class="font-display font-semibold text-tinta">{title}</p>
+    <p class="mt-0.5 text-sm text-tinta-muted">{text}</p>
+  </div>
+</div>

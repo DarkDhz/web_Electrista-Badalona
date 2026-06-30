@@ -1,0 +1,60 @@
+---
+import { business, telHref } from '../data/business';
+import { content, type Lang } from '../data/content';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = content[lang];
+const legalHref = lang === 'es' ? '/aviso-legal/' : '/ca/avis-legal/';
+const privacyHref = lang === 'es' ? '/politica-privacidad/' : '/ca/politica-de-privacitat/';
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-crema-200 bg-crema-200/40">
+  <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
+    <div>
+      <p class="flex items-center gap-2 font-display text-lg font-semibold text-tinta">
+        <span class="grid h-8 w-8 place-items-center rounded-lg bg-terracota text-crema">
+          <Icon name="bolt" class="h-4 w-4" />
+        </span>
+        Electricista Badalona
+      </p>
+      <p class="mt-3 text-sm text-tinta-muted">{t.footer.tagline}</p>
+    </div>
+
+    <div class="text-sm not-italic text-tinta-muted">
+      <address class="space-y-2 not-italic">
+        <p class="flex items-start gap-2">
+          <Icon name="pin" class="mt-0.5 h-4 w-4 text-teal" />
+          {business.street}, {business.postalCode} {business.city}
+        </p>
+        <p class="flex items-center gap-2">
+          <Icon name="phone" class="h-4 w-4 text-teal" />
+          <a href={telHref} class="font-semibold text-tinta hover:text-terracota">{business.phoneDisplay}</a>
+        </p>
+        <p class="flex items-center gap-2">
+          <Icon name="mail" class="h-4 w-4 text-teal" />
+          <a href={`mailto:${business.email}`} class="hover:text-terracota">{business.email}</a>
+        </p>
+        <p class="flex items-center gap-2">
+          <Icon name="clock" class="h-4 w-4 text-teal" />
+          {business.openingHoursDisplay}
+        </p>
+      </address>
+    </div>
+
+    <div class="text-sm">
+      <ul class="space-y-2 text-tinta-muted">
+        <li><a href={legalHref} class="hover:text-terracota">{t.footer.legal}</a></li>
+        <li><a href={privacyHref} class="hover:text-terracota">{t.footer.privacy}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-crema-200 px-4 py-4 text-center text-xs text-tinta-muted sm:px-6">
+    © {year} Electricista Badalona. {t.footer.rights}
+  </div>
+</footer>

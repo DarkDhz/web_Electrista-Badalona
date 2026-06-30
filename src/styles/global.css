@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+/* Fuentes autohospedadas (variable) */
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/inter';
+
+/* ------------------------------------------------------------------ */
+/*  Sistema de diseño "Cercanía de barrio"                            */
+/*  Paleta cálida mediterránea, sin gradientes, contraste tipográfico */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Colores de marca */
+  --color-crema: #faf6f0;
+  --color-crema-200: #f1e9dd;
+  --color-tinta: #2a2420;
+  --color-tinta-muted: #6b5f54;
+  --color-terracota: #c1502e;
+  --color-terracota-dark: #a23f22;
+  --color-teal: #2f6e6a;
+  --color-teal-dark: #245450;
+
+  /* Tipografía */
+  --font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter Variable', system-ui, -apple-system, sans-serif;
+
+  /* Sombras cálidas (no grises duras) */
+  --shadow-warm: 0 10px 30px -12px rgba(122, 73, 45, 0.25);
+  --shadow-warm-sm: 0 4px 14px -8px rgba(122, 73, 45, 0.3);
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  color: var(--color-tinta);
+  background-color: var(--color-crema);
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
+/* Respeta usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Utilidad: foco visible accesible con el acento de marca */
+:focus-visible {
+  outline: 3px solid var(--color-teal);
+  outline-offset: 2px;
+}
