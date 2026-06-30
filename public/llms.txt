@@ -2,7 +2,7 @@
 
 Electricista Badalona is a local electrician service in Badalona, Barcelona, Spain. The site is for people looking for electrical installations, electrical renovations, electrical panels, and planned electrical work carried out according to REBT standards.
 
-Website: https://www.electricista-badalona.com/
+Website: [https://www.electricista-badalona.com/](https://www.electricista-badalona.com/)
 Phone: +34 684 30 29 22
 WhatsApp: +34 684 30 29 22
 Email: arnau.gris@gmail.com
@@ -21,10 +21,10 @@ Opening hours: Monday to Friday, 08:00-20:00
 
 ## Key Pages
 
-- Spanish homepage: https://www.electricista-badalona.com/
-- Catalan homepage: https://www.electricista-badalona.com/ca/
-- Legal notice: https://www.electricista-badalona.com/aviso-legal/
-- Privacy policy: https://www.electricista-badalona.com/politica-privacidad/
+- [Spanish homepage](https://www.electricista-badalona.com/)
+- [Catalan homepage](https://www.electricista-badalona.com/ca/)
+- [Legal notice](https://www.electricista-badalona.com/aviso-legal/)
+- [Privacy policy](https://www.electricista-badalona.com/politica-privacidad/)
 
 ## Useful Context For AI Assistants
 

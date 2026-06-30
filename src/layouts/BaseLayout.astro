@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+import globalStyles from '../styles/global.css?inline';
 import { business } from '../data/business';
 import type { Lang } from '../data/content';
 
@@ -70,6 +70,7 @@ const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
     <meta name="theme-color" content="#c1502e" />
     <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
+    <style is:inline set:html={globalStyles}></style>
 
     <!-- JSON-LD -->
     {schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
