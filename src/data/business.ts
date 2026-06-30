@@ -22,7 +22,10 @@ export const business = {
   country: 'ES',
   // Horario
   openingHours: 'Lu-Vi 08:00-20:00',
-  openingHoursDisplay: 'Lunes a viernes, 8:00 – 20:00 h',
+  openingHoursDisplay: {
+    es: 'Lunes a viernes, 8:00 - 20:00 h',
+    ca: 'Dilluns a divendres, 8:00 - 20:00 h',
+  },
   // Dominio / web
   url: 'https://www.electricista-badalona.com',
   // Analítica — propiedad GA4 real
@@ -35,6 +38,11 @@ export const business = {
 export const telHref = `tel:+34${business.phone}`;
 
 /** Enlace de WhatsApp con mensaje predefinido */
-export function whatsappHref(message = 'Hola, necesito información sobre una instalación eléctrica en Badalona.') {
+export function whatsappHref(
+  lang: 'es' | 'ca' = 'es',
+  message = lang === 'ca'
+    ? 'Hola, necessito informació sobre una instal·lació elèctrica a Badalona.'
+    : 'Hola, necesito información sobre una instalación eléctrica en Badalona.',
+) {
   return `https://wa.me/${business.whatsapp}?text=${encodeURIComponent(message)}`;
 }

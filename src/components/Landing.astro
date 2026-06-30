@@ -52,7 +52,7 @@ const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
             {t.hero.callBtn}
           </a>
           <a
-            href={whatsappHref()}
+            href={whatsappHref(lang)}
             target="_blank"
             rel="noopener"
             class="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-teal px-6 py-3.5 text-base font-semibold text-teal transition hover:bg-teal hover:text-crema"
@@ -201,7 +201,7 @@ const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
             <span class="grid h-11 w-11 place-items-center rounded-xl bg-crema-200 text-tinta"><Icon name="clock" class="h-5 w-5" /></span>
             <span>
               <span class="block text-xs uppercase tracking-wide text-tinta-muted">{t.contact.hoursLabel}</span>
-              <span class="font-semibold">{business.openingHoursDisplay}</span>
+              <span class="font-semibold">{business.openingHoursDisplay[lang]}</span>
             </span>
           </div>
         </div>
