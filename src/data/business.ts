@@ -31,7 +31,7 @@ export const business = {
   // Analítica — propiedad GA4 real
   ga4Id: 'G-KN0LS7Y9Y1',
   // Zona de cobertura
-  areaServed: ['Badalona', 'Santa Coloma de Gramenet', 'Sant Adrià de Besòs', 'Montgat', 'Tiana'],
+  areaServed: ['Badalona', 'Santa Coloma de Gramenet', 'Sant Adrià de Besòs', 'Montgat', 'Tiana', 'Barcelona'],
 } as const;
 
 /** Enlace tel: para botones de llamada */

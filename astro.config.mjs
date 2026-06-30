@@ -18,6 +18,17 @@ export default defineConfig({
       // Las páginas legales llevan noindex; no deben aparecer en el sitemap.
       filter: (page) =>
         !/\/(aviso-legal|politica-privacidad|ca\/avis-legal|ca\/politica-de-privacitat)\/?$/.test(page),
+      serialize(item) {
+        if (!item.links?.length) return item;
+
+        const defaultLink = item.links.find((link) => link.lang === 'es-ES');
+        if (!defaultLink || item.links.some((link) => link.lang === 'x-default')) return item;
+
+        return {
+          ...item,
+          links: [...item.links, { lang: 'x-default', url: defaultLink.url }],
+        };
+      },
       i18n: {
         defaultLocale: 'es',
         locales: {
