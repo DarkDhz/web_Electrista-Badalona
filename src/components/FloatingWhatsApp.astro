@@ -1,0 +1,28 @@
+---
+import { whatsappHref } from '../data/business';
+import { content, type Lang } from '../data/content';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const label = lang === 'ca' ? 'Escriure per WhatsApp' : 'Escribir por WhatsApp';
+const _t = content[lang];
+---
+
+<!--
+  WhatsApp flotante abajo a la derecha.
+  Oculto en móvil (<md) porque ahí ya está la barra fija de StickyCallButton con WhatsApp.
+-->
+<a
+  href={whatsappHref()}
+  target="_blank"
+  rel="noopener"
+  aria-label={label}
+  title={label}
+  data-whatsapp-cta
+  class="fixed bottom-6 right-6 z-50 hidden h-14 w-14 place-items-center rounded-full bg-teal text-crema shadow-warm transition hover:scale-105 hover:bg-teal-dark md:grid"
+>
+  <Icon name="whatsapp" class="h-7 w-7" />
+</a>

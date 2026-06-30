@@ -4,6 +4,7 @@ import { content, type Lang } from '../data/content';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import StickyCallButton from './StickyCallButton.astro';
+import FloatingWhatsApp from './FloatingWhatsApp.astro';
 import ServiceCard from './ServiceCard.astro';
 import TrustBadge from './TrustBadge.astro';
 import FaqAccordion from './FaqAccordion.astro';
@@ -40,13 +41,13 @@ const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
         </h1>
         <p class="mt-5 max-w-xl text-lg text-tinta-muted">{t.hero.subtitle}</p>
 
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <a
             href={telHref}
             class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracota px-6 py-3.5 text-base font-semibold text-crema shadow-warm transition hover:bg-terracota-dark"
             data-call-cta
           >
-            <Icon name="phone" class="h-5 w-5" />
+            <Icon name="phone" class="h-5 w-5 shrink-0" />
             {t.hero.callBtn}
           </a>
           <a
@@ -56,19 +57,14 @@ const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
             class="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-teal px-6 py-3.5 text-base font-semibold text-teal transition hover:bg-teal hover:text-crema"
             data-whatsapp-cta
           >
-            <Icon name="whatsapp" class="h-5 w-5" />
+            <Icon name="whatsapp" class="h-5 w-5 shrink-0" />
             {t.hero.whatsappBtn}
           </a>
-        </div>
-
-        <!-- Insignias de confianza (sin reseñas: garantías reales) -->
-        <div class="mt-10 grid gap-3 sm:grid-cols-3">
-          {t.trust.map((item, i) => <TrustBadge title={item.title} text={item.text} icon={trustIcons[i]} />)}
         </div>
       </div>
 
       <!-- Foto: placeholder marcado hasta tener imagen real. Esquina recortada distinta a los botones. -->
-      <div class="relative lg:-mr-12">
+      <div class="relative">
         <div
           class="flex aspect-[4/5] items-center justify-center rounded-tl-[2.5rem] rounded-br-[2.5rem] rounded-tr-xl rounded-bl-xl border-2 border-dashed border-terracota/40 bg-gradient-to-b from-crema-200 to-crema text-center"
         >
@@ -86,8 +82,15 @@ const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
     </div>
   </section>
 
+  <!-- ============ FRANJA DE CONFIANZA (a todo el ancho, sin reseñas: garantías reales) ============ -->
+  <section class="border-y border-crema-200 bg-white/40">
+    <div class="mx-auto grid max-w-6xl gap-4 px-4 py-8 sm:px-6 md:grid-cols-3">
+      {t.trust.map((item, i) => <TrustBadge title={item.title} text={item.text} icon={trustIcons[i]} />)}
+    </div>
+  </section>
+
   <!-- ============ SERVICIOS ============ -->
-  <section id="servicios" class="scroll-mt-20 border-y border-crema-200 bg-white/40">
+  <section id="servicios" class="scroll-mt-20">
     <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
       <h2 class="font-display text-3xl font-semibold text-tinta sm:text-4xl">{t.services.title}</h2>
       <p class="mt-3 max-w-2xl text-lg text-tinta-muted">{t.services.intro}</p>
@@ -98,7 +101,7 @@ const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
   </section>
 
   <!-- ============ PROCESO (numerado, no rejilla abstracta) ============ -->
-  <section id="proceso" class="scroll-mt-20">
+  <section id="proceso" class="scroll-mt-20 border-y border-crema-200 bg-white/40">
     <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
       <h2 class="font-display text-3xl font-semibold text-tinta sm:text-4xl">{t.process.title}</h2>
       <p class="mt-3 max-w-2xl text-lg text-tinta-muted">{t.process.intro}</p>
@@ -223,4 +226,5 @@ const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
 
 <Footer lang={lang} />
 <StickyCallButton lang={lang} />
+<FloatingWhatsApp lang={lang} />
 <CookieBanner lang={lang} />
