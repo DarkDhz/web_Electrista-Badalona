@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { business } from '../data/business';
 import type { Lang } from '../data/content';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   lang: Lang;
@@ -98,6 +99,9 @@ const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
       window.__loadGA4__ = loadGA4;
       if (localStorage.getItem('cookie-consent') === 'accepted') loadGA4();
     </script>
+
+    <!-- Vercel Web Analytics -->
+    <Analytics />
   </head>
   <body class="bg-crema text-tinta antialiased">
     <slot />
