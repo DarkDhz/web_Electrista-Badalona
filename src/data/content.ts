@@ -39,6 +39,7 @@ export interface LandingContent {
     callBtn: string;
     whatsappBtn: string;
     photoPlaceholder: string;
+    photoAlt: string;
   };
   trust: TrustItem[];
   services: { title: string; intro: string; items: ServiceItem[] };
@@ -76,6 +77,7 @@ export const content: Record<Lang, LandingContent> = {
       callBtn: 'Llamar al 684 30 29 22',
       whatsappBtn: 'Escribir por WhatsApp',
       photoPlaceholder: '[FOTO ELECTRICISTA AQUÍ]',
+      photoAlt: 'Electricista trabajando en un cuadro eléctrico en Badalona',
     },
     trust: [
       { title: 'Presupuesto sin compromiso', text: 'Te digo lo que cuesta antes de empezar. Sin sorpresas en la factura.' },
@@ -185,6 +187,7 @@ export const content: Record<Lang, LandingContent> = {
       callBtn: 'Trucar al 684 30 29 22',
       whatsappBtn: 'Escriure per WhatsApp',
       photoPlaceholder: '[FOTO ELECTRICISTA AQUÍ]',
+      photoAlt: 'Electricista treballant en un quadre elèctric a Badalona',
     },
     trust: [
       { title: 'Pressupost sense compromís', text: 'Et dic què costa abans de començar. Sense sorpreses a la factura.' },

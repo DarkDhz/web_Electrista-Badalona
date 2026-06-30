@@ -10,11 +10,12 @@ interface Props {
   description: string;
   path: string;
   alternates?: Partial<Record<Lang, string>>;
+  noindex?: boolean;
 }
-const { lang, title, description, path, alternates } = Astro.props;
+const { lang, title, description, path, alternates, noindex } = Astro.props;
 ---
 
-<BaseLayout lang={lang} title={title} description={description} path={path} alternates={alternates}>
+<BaseLayout lang={lang} title={title} description={description} path={path} alternates={alternates} noindex={noindex}>
   <Header lang={lang} />
   <main class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
     <article class="prose-legal">

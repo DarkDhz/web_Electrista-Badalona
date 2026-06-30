@@ -13,9 +13,11 @@ interface Props {
   alternates?: Partial<Record<Lang, string>>;
   /** Inyecta JSON-LD (objeto o array de objetos) */
   jsonLd?: object | object[];
+  /** Si true, emite robots noindex (páginas que no deben aparecer en Google) */
+  noindex?: boolean;
 }
 
-const { lang, title, description, path, alternates, jsonLd } = Astro.props;
+const { lang, title, description, path, alternates, jsonLd, noindex } = Astro.props;
 
 const site = business.url;
 const canonical = new URL(path, site).href;
@@ -29,7 +31,9 @@ const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
@@ -56,12 +60,16 @@ const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content={business.name} />
+    <meta property="og:image" content={new URL('/og-image.jpg', site).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL('/og-image.jpg', site).href} />
 
     <meta name="theme-color" content="#c1502e" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
 
     <!-- JSON-LD -->
     {schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}

@@ -22,6 +22,13 @@ npm run preview  # sirve dist/ tal como quedará en producción
 No hay tests ni linter configurados. La verificación es: `npm run build` sin errores + revisar el HTML de `dist/`
 (H1, hreflang, JSON-LD) y comprobar visualmente con `npm run preview`.
 
+**Verificación responsive (importante):** el sitio se rompe con facilidad en anchos concretos (textos cortados,
+overflow). Para cambios de layout, captura a 375px y 1366px y detecta overflow horizontal. Hay Playwright disponible
+vía `npx playwright` y Chrome del sistema en `C:/Program Files/Google/Chrome/Application/chrome.exe`; el patrón usado
+es instalar `playwright-core` en un dir scratch y lanzar Chrome con `executablePath` (evita descargar navegador) para
+hacer `fullPage` screenshots y comprobar `documentElement.scrollWidth > clientWidth`. El mapa de Google embebido sale
+en blanco en headless (no pinta tiles sin consentimiento) pero funciona en un navegador real — no es un bug.
+
 ## Arquitectura
 
 El patrón central es **contenido separado de presentación**, para que las dos landing (ES y CA) compartan el mismo
@@ -39,13 +46,17 @@ Flujo de renderizado:
 
 - **`src/pages/index.astro`** (ES, ruta `/`) y **`src/pages/ca/index.astro`** (CA, ruta `/ca/`) son envoltorios
   finos: fijan `lang`, pasan meta + `jsonLd` a `BaseLayout` y renderizan `<Landing lang={lang} />`.
-- **`src/components/Landing.astro`** ensambla TODAS las secciones de la página (hero, servicios, proceso, por qué,
-  zona, FAQ, contacto). Aquí es donde se edita la estructura/orden de la landing.
+- **`src/components/Landing.astro`** ensambla TODAS las secciones de la página (hero, franja de confianza, servicios,
+  proceso, por qué, zona, FAQ, contacto). Aquí es donde se edita la estructura/orden de la landing. Los fondos de
+  sección alternan a propósito (crema ↔ `bg-white/40`) para separarlas visualmente.
 - **`src/layouts/BaseLayout.astro`** es el `<head>` común: meta, OG, canonical, hreflang recíproco (recibe `alternates`),
   inyección de JSON-LD y el bootstrap de Google Analytics. **GA4 NO se carga hasta que el usuario acepta cookies**
   (consentimiento RGPD): el script define `window.__loadGA4__` y `CookieBanner.astro` lo invoca al pulsar "Aceptar".
+  Acepta una prop `noindex` que emite `<meta name="robots" content="noindex, follow">` (por defecto `index, follow`).
 - **`src/layouts/LegalLayout.astro`** + `src/pages/aviso-legal.astro`, `politica-privacidad.astro` y sus espejos en
-  `src/pages/ca/` son las páginas legales (obligatorias en España), enlazadas solo desde el footer.
+  `src/pages/ca/` son las páginas legales (obligatorias en España), enlazadas solo desde el footer. Llevan `noindex`
+  (pasan la prop a `BaseLayout`) **y** están excluidas del sitemap vía el `filter` de `@astrojs/sitemap` en
+  `astro.config.mjs`. Si añades o renombras una página que no deba indexarse, mantén ambos sitios sincronizados.
 
 i18n: configurado en `astro.config.mjs` con `defaultLocale: 'es'` y `prefixDefaultLocale: false` → castellano en la
 raíz, catalán bajo `/ca/`. Al añadir cualquier página nueva, créala en ambos idiomas y enlaza el par vía `alternates`
@@ -70,6 +81,9 @@ propios en `src/components/Icon.astro` (no Heroicons), sin glassmorphism, copy e
   simulando una persona ni stock genérico.
 - **Datos fiscales pendientes**: `legalName` y `nif` en `business.ts` son placeholders porque el titular aún no está
   dado de alta como autónomo. **No se debe desplegar a producción** sin rellenarlos (requisito legal del Aviso Legal).
+- **Dos CTA de WhatsApp según dispositivo** (no duplicar): `StickyCallButton.astro` es la barra fija inferior con
+  Llamar + WhatsApp, solo en móvil (`md:hidden`); `FloatingWhatsApp.astro` es el botón flotante circular, solo en
+  escritorio (`hidden md:grid`). Todos los CTA llevan `data-call-cta` / `data-whatsapp-cta` para medir clics en GA4.
 
 ## Contexto del proyecto
 
