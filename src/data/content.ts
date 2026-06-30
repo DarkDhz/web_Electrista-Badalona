@@ -65,15 +65,15 @@ export const content: Record<Lang, LandingContent> = {
   es: {
     htmlLang: 'es',
     locale: 'es_ES',
-    metaTitle: 'Electricista en Badalona | Instalaciones eléctricas — Presupuesto sin compromiso',
+    metaTitle: 'Electricista Badalona | Instalaciones eléctricas',
     metaDescription:
-      'Electricista en Badalona especializado en instalaciones eléctricas: instalación nueva, reformas y cuadros eléctricos. Presupuesto sin compromiso. Llama al 684 30 29 22.',
+      'Electricista en Badalona para instalaciones, reformas y cuadros eléctricos. Presupuesto sin compromiso. Llama al 684 30 29 22.',
     nav: { servicios: 'Servicios', proceso: 'Cómo trabajo', zona: 'Zona', faq: 'Preguntas', contacto: 'Contacto', cta: 'Llamar ahora' },
     hero: {
       eyebrow: 'Electricista en Badalona',
       h1: 'Tu electricista de confianza en Badalona',
       subtitle:
-        'Instalaciones eléctricas hechas bien, a la primera. Instalación nueva, reformas y cuadros eléctricos para tu casa o local. Presupuesto claro y sin compromiso.',
+        'Tu electricista de confianza en Badalona para instalaciones eléctricas hechas bien, a la primera. Instalación nueva, reformas y cuadros eléctricos para tu casa o local.',
       callBtn: 'Llamar al 684 30 29 22',
       whatsappBtn: 'Escribir por WhatsApp',
       photoPlaceholder: '[FOTO ELECTRICISTA AQUÍ]',
@@ -175,15 +175,15 @@ export const content: Record<Lang, LandingContent> = {
   ca: {
     htmlLang: 'ca',
     locale: 'ca_ES',
-    metaTitle: 'Electricista a Badalona | Instal·lacions elèctriques — Pressupost sense compromís',
+    metaTitle: 'Electricista Badalona | Instal·lacions elèctriques',
     metaDescription:
-      'Electricista a Badalona especialitzat en instal·lacions elèctriques: instal·lació nova, reformes i quadres elèctrics. Pressupost sense compromís. Truca al 684 30 29 22.',
+      'Electricista a Badalona per a instal·lacions, reformes i quadres elèctrics. Pressupost sense compromís. Truca al 684 30 29 22.',
     nav: { servicios: 'Serveis', proceso: 'Com treballo', zona: 'Zona', faq: 'Preguntes', contacto: 'Contacte', cta: 'Trucar ara' },
     hero: {
       eyebrow: 'Electricista a Badalona',
       h1: 'El teu electricista de confiança a Badalona',
       subtitle:
-        'Instal·lacions elèctriques ben fetes, a la primera. Instal·lació nova, reformes i quadres elèctrics per a casa teva o el teu local. Pressupost clar i sense compromís.',
+        'El teu electricista de confiança a Badalona per a instal·lacions elèctriques ben fetes, a la primera. Instal·lació nova, reformes i quadres elèctrics.',
       callBtn: 'Trucar al 684 30 29 22',
       whatsappBtn: 'Escriure per WhatsApp',
       photoPlaceholder: '[FOTO ELECTRICISTA AQUÍ]',
