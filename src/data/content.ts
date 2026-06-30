@@ -67,7 +67,7 @@ export const content: Record<Lang, LandingContent> = {
     locale: 'es_ES',
     metaTitle: 'Electricista Badalona | Instalaciones eléctricas',
     metaDescription:
-      'Electricista en Badalona para instalaciones, reformas y cuadros eléctricos. Presupuesto sin compromiso. Llama al 684 30 29 22.',
+      'Electricista en Badalona para instalaciones, reformas y cuadros eléctricos. Presupuesto claro y sin compromiso. Llama al 684 30 29 22.',
     nav: { servicios: 'Servicios', proceso: 'Cómo trabajo', zona: 'Zona', faq: 'Preguntas', contacto: 'Contacto', cta: 'Llamar ahora' },
     hero: {
       eyebrow: 'Electricista en Badalona',
@@ -177,7 +177,7 @@ export const content: Record<Lang, LandingContent> = {
     locale: 'ca_ES',
     metaTitle: 'Electricista Badalona | Instal·lacions elèctriques',
     metaDescription:
-      'Electricista a Badalona per a instal·lacions, reformes i quadres elèctrics. Pressupost sense compromís. Truca al 684 30 29 22.',
+      'Electricista a Badalona per a instal·lacions, reformes i quadres elèctrics. Pressupost clar i sense compromís. Truca al 684 30 29 22.',
     nav: { servicios: 'Serveis', proceso: 'Com treballo', zona: 'Zona', faq: 'Preguntes', contacto: 'Contacte', cta: 'Trucar ara' },
     hero: {
       eyebrow: 'Electricista a Badalona',
