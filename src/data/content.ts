@@ -145,7 +145,7 @@ export const content: Record<Lang, LandingContent> = {
         },
         {
           q: '¿En qué zonas trabajáis?',
-          a: 'En Badalona y alrededores (Santa Coloma de Gramenet, Sant Adrià de Besòs, Montgat, Tiana). Si tienes dudas con tu dirección, pregúntame.',
+          a: 'En Badalona y alrededores (Barcelona, Santa Coloma de Gramenet, Sant Adrià de Besòs, Montgat, Tiana). Si tienes dudas con tu dirección, pregúntame.',
         },
       ],
     },
@@ -255,7 +255,7 @@ export const content: Record<Lang, LandingContent> = {
         },
         {
           q: 'A quines zones treballeu?',
-          a: 'A Badalona i rodalies (Santa Coloma de Gramenet, Sant Adrià de Besòs, Montgat, Tiana). Si tens dubtes amb la teva adreça, pregunta-m’ho.',
+          a: 'A Badalona i rodalies (Barcelona, Santa Coloma de Gramenet, Sant Adrià de Besòs, Montgat, Tiana). Si tens dubtes amb la teva adreça, pregunta-m’ho.',
         },
       ],
     },
