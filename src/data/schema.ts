@@ -1,7 +1,7 @@
 import { business } from './business';
 import type { FaqItem } from './content';
 
-/** Schema Electrician/LocalBusiness con NAP, geo, horario y zona. */
+/** Schema Electrician/LocalBusiness con contacto, horario y zona. */
 export function localBusinessSchema(lang: 'es' | 'ca') {
   return {
     '@context': 'https://schema.org',
@@ -19,16 +19,9 @@ export function localBusinessSchema(lang: 'es' | 'ca') {
     priceRange: '€€',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: business.street,
-      postalCode: business.postalCode,
       addressLocality: business.city,
       addressRegion: business.region,
       addressCountry: business.country,
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: business.geo.lat,
-      longitude: business.geo.lng,
     },
     areaServed: business.areaServed.map((a) => ({ '@type': 'City', name: a })),
     openingHoursSpecification: [

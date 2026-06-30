@@ -1,6 +1,6 @@
 /**
  * Fuente única de verdad de los datos del negocio (NAP).
- * Cualquier cambio de teléfono, dirección, etc. se hace SOLO aquí.
+ * Cualquier cambio de teléfono, zona, etc. se hace SOLO aquí.
  */
 export const business = {
   name: 'Electricista Badalona',
@@ -11,17 +11,15 @@ export const business = {
   phoneDisplay: '684 30 29 22',
   whatsapp: '34684302922',
   email: 'arnau.gris@gmail.com',
-  // Dirección (NAP real)
-  street: 'Carrer de la Camèlia, 20',
-  postalCode: '08912',
+  // Ubicación pública. No publicar una dirección privada en la web.
+  publicLocation: {
+    es: 'Badalona y alrededores',
+    ca: 'Badalona i rodalies',
+  },
+  fiscalAddress: '[DOMICILIO FISCAL]', // pendiente: alta de autónomo o domicilio profesional
   city: 'Badalona',
   region: 'Barcelona',
   country: 'ES',
-  // Geo (Carrer de la Camèlia 20, Badalona — aproximado, verificar al geocodificar)
-  geo: {
-    lat: 41.4469,
-    lng: 2.2410,
-  },
   // Horario
   openingHours: 'Lu-Vi 08:00-20:00',
   openingHoursDisplay: 'Lunes a viernes, 8:00 – 20:00 h',

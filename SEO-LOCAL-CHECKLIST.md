@@ -20,7 +20,7 @@ depende sobre todo del trabajo **off-site** de esta lista. Hazlo en orden.
 
 - [ ] Crear la ficha en https://business.google.com con el nombre exacto **Electricista Badalona**.
 - [ ] Categoría principal: **Electricista**. Categorías secundarias si aplica (p. ej. "Servicio de instalación eléctrica").
-- [ ] Dirección: **Carrer de la Camèlia, 20, 08912 Badalona** (debe coincidir EXACTAMENTE con la web — ver punto 2).
+- [ ] Dirección: si trabajas desde casa, configura Google Business Profile como negocio de área de servicio y oculta la dirección pública.
 - [ ] Teléfono: **684 30 29 22** (el mismo que en la web).
 - [ ] Web: **https://www.electricista-badalona.com**
 - [ ] Horario: **Lunes a viernes, 8:00–20:00** (igual que la web).
@@ -31,12 +31,12 @@ depende sobre todo del trabajo **off-site** de esta lista. Hazlo en orden.
 
 ## 2. NAP consistente (Nombre, Dirección, Teléfono)
 
-El NAP debe ser **idéntico, carácter por carácter**, en la web, en Google y en todos los directorios. Ya es coherente
-en la web (todo sale de `src/data/business.ts`). Replica EXACTAMENTE:
+El NAP público debe ser coherente en la web, en Google y en todos los directorios. Si no quieres publicar una dirección
+privada, usa el negocio como área de servicio y muestra solo la zona:
 
 ```
 Electricista Badalona
-Carrer de la Camèlia, 20, 08912 Badalona
+Badalona y alrededores
 684 30 29 22
 ```
 
@@ -77,7 +77,7 @@ Carrer de la Camèlia, 20, 08912 Badalona
 | Dominio | electricista-badalona.com |
 | Teléfono / WhatsApp | 684 30 29 22 |
 | Email | arnau.gris@gmail.com |
-| Dirección | Carrer de la Camèlia, 20, 08912 Badalona |
+| Zona pública | Badalona y alrededores |
 | Horario | L-V 8:00–20:00 |
 | GA4 | G-KN0LS7Y9Y1 |
 | Competidor directo a batir | electricistabadalona.com (ISE Electrical Solutions) |

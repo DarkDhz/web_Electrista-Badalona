@@ -9,7 +9,7 @@ Datos confirmados por el usuario:
 - Servicio único de foco: **instalaciones eléctricas** (no boletines/averías/domótica por ahora)
 - Idiomas: **castellano + catalán**
 - Teléfono/WhatsApp real: **684 30 29 22** (confirmado por el usuario) → se usa en footer, botón de llamada/WhatsApp y schema LocalBusiness.
-- Dirección completa y confirmada: **Carrer de la Camèlia, 20, 08912 Badalona**. Dato real y completo para el schema LocalBusiness y el NAP (footer + contacto), sin placeholders.
+- Ubicación pública: **Badalona y alrededores**. No se publica la dirección privada de casa en la web, el footer, el mapa ni el schema.
 - Email de contacto: **arnau.gris@gmail.com**.
 - Stack elegido: **Astro** (sitio estático, ideal para SEO/Core Web Vitals).
 - Dominio elegido: **electricista-badalona.com** ($11.25/año, disponible en Vercel). Exact-match con la keyword principal, TLD `.com` universal/confianza alta. Nota: el competidor real `electricistabadalona.com` (ISE Electrical Solutions, Santa Coloma de Gramenet, 15+ años, ya con testimonios) ya está ocupado — es el rival directo a batir en el SERP de "electricista badalona".
@@ -42,7 +42,7 @@ Una única landing por idioma (`/` en castellano, `/ca/` en catalán), con estas
 3. **Por qué elegirnos** — confianza sin depender de reseñas (negocio nuevo, sin prueba social todavía): presupuesto sin compromiso, materiales homologados, garantía del trabajo, tiempo de respuesta, transparencia en el proceso. Nada de testimonios o cifras de clientes inventados — eso son afirmaciones falsas que además violan las políticas de reseñas de Google.
 4. **Zona de cobertura** — Badalona y alrededores.
 5. **FAQ** — con `FAQPage` schema (ayuda extra a posicionar e indexar bien).
-6. **Contacto final** — teléfono, WhatsApp, NAP, mapa embebido.
+6. **Contacto final** — teléfono, WhatsApp, zona pública y mapa embebido de Badalona.
 
 Nota: la sección de reseñas/prueba social se añadirá más adelante en cuanto existan reseñas reales en Google Business Profile (es el primer paso del checklist off-site). Por ahora la landing genera confianza por transparencia y claridad del proceso, no por prueba social.
 
@@ -91,7 +91,7 @@ Preocupación explícita del usuario: que la web no parezca otra landing genéri
 ## SEO técnico on-page
 
 - `@astrojs/sitemap` para sitemap.xml automático; `robots.txt` permitiendo todo + referencia al sitemap.
-- JSON-LD `Electrician`/`LocalBusiness` con NAP real (Carrer de la Camèlia 20, 08912 Badalona), `areaServed: Badalona`, `openingHours` (L-V 8:00-20:00), `telephone`, `email`, y `geo` (`GeoCoordinates`) con las coordenadas de Carrer de la Camèlia 20, Badalona (geocodificar la dirección exacta al implementar).
+- JSON-LD `Electrician`/`LocalBusiness` con contacto público, `areaServed: Badalona`, `openingHours` (L-V 8:00-20:00), `telephone` y `email`. No se incluye `streetAddress` ni `geo` para evitar publicar una dirección privada.
 - `hreflang` es/ca recíproco entre páginas equivalentes.
 - Imágenes vía `astro:assets` (optimización automática, `loading="lazy"` salvo hero).
 - HTML semántico: un único `<h1>` por página con la keyword objetivo, jerarquía de `<h2>` por servicio/sección.

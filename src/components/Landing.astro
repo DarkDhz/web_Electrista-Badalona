@@ -21,8 +21,8 @@ const t = content[lang];
 const serviceIcons = ['panel', 'wire', 'switch'] as const;
 const trustIcons = ['check', 'shield', 'clock'] as const;
 
-// Mapa de Google embebido (dirección real, sin API key necesaria con el modo q=)
-const mapQuery = encodeURIComponent(`${business.street}, ${business.postalCode} ${business.city}`);
+// Mapa de Google embebido por zona, sin exponer una dirección privada.
+const mapQuery = encodeURIComponent(`${business.city}, ${business.region}`);
 const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
 ---
 
@@ -194,7 +194,7 @@ const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
             <span class="grid h-11 w-11 place-items-center rounded-xl bg-tinta text-crema"><Icon name="pin" class="h-5 w-5" /></span>
             <span>
               <span class="block text-xs uppercase tracking-wide text-tinta-muted">{t.contact.addressLabel}</span>
-              <span class="font-semibold">{business.street}, {business.postalCode} {business.city}</span>
+              <span class="font-semibold">{business.publicLocation[lang]}</span>
             </span>
           </div>
           <div class="flex items-center gap-3 text-tinta">

@@ -29,7 +29,7 @@ const year = new Date().getFullYear();
       <address class="space-y-2 not-italic">
         <p class="flex items-start gap-2">
           <Icon name="pin" class="mt-0.5 h-4 w-4 text-teal" />
-          {business.street}, {business.postalCode} {business.city}
+          {business.publicLocation[lang]}
         </p>
         <p class="flex items-center gap-2">
           <Icon name="phone" class="h-4 w-4 text-teal" />

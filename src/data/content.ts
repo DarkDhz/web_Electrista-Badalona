@@ -152,7 +152,7 @@ export const content: Record<Lang, LandingContent> = {
     contact: {
       title: 'Pide tu presupuesto',
       intro: 'Llámame, escríbeme por WhatsApp o mándame un correo. Te respondo lo antes posible.',
-      addressLabel: 'Dirección',
+      addressLabel: 'Zona',
       phoneLabel: 'Teléfono y WhatsApp',
       emailLabel: 'Correo',
       hoursLabel: 'Horario',
@@ -262,7 +262,7 @@ export const content: Record<Lang, LandingContent> = {
     contact: {
       title: 'Demana el teu pressupost',
       intro: 'Truca’m, escriu-me per WhatsApp o envia’m un correu. Et responc al més aviat possible.',
-      addressLabel: 'Adreça',
+      addressLabel: 'Zona',
       phoneLabel: 'Telèfon i WhatsApp',
       emailLabel: 'Correu',
       hoursLabel: 'Horari',
